@@ -1,2 +1,3 @@
 *.py linguist-language=Python
-*.sgss linguist-language=Snow Graphics System Scene
+*.sgss linguist-language=SGSS
+*.md linguist-language=Markdown
