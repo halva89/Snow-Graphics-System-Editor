@@ -1,0 +1,15 @@
+window 800 600
+title "Snow Graphics System Scene"
+
+square
+100
+1.00 0.00 0.00
+circle
+200
+1.00 0.72 0.95
+circle
+200
+1.00 0.50 0.95
+square
+200
+1.00 0.50 0.00
