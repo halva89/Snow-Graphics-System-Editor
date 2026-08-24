@@ -17,7 +17,7 @@
 Variant 1: source code
 1. Install the source code or clone repository
 2. Install the `Python`, open Terminal(Linux) or PowerShell(Windows)
-3. Write `pip install pyqt5`
+3. Write `pip install PyQt5 pyqtgraph numpy`
 4. Open install directory
 5. Open `main.py`
 
