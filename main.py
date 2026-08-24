@@ -297,10 +297,40 @@ class SceneEditor(QMainWindow):
             with open(path, 'w') as f:
                 f.write("window 800 600\n")
                 f.write("title \"Snow Graphics System Scene\"\n\n")
+                
                 for obj in self.objects:
-                    f.write(f"{obj['type']}\n")
-                    f.write(f"{int(obj['size'])}\n")
-                    f.write(f"{obj['color'][0]:.2f} {obj['color'][1]:.2f} {obj['color'][2]:.2f}\n")
+                    obj_type = obj['type']
+                    size = int(obj['size'])
+                    r, g, b = obj['color']
+                    
+                    if obj_type == 'square':
+                        f.write(f"square\n")
+                        f.write(f"{obj['x']:.1f} {obj['y']:.1f} {size}\n")
+                        f.write(f"{r:.2f} {g:.2f} {b:.2f}\n\n")
+                        
+                    elif obj_type == 'circle':
+                        radius = size / 2
+                        segments = 32
+                        f.write(f"circle\n")
+                        f.write(f"{obj['x']:.1f} {obj['y']:.1f} {radius:.1f} {segments}\n")
+                        f.write(f"{r:.2f} {g:.2f} {b:.2f}\n\n")
+                        
+                    elif obj_type == 'triangle':
+                        half = size / 2
+                        f.write(f"triangle\n")
+                        f.write(f"{obj['x']:.1f} {obj['y'] - half:.1f}\n")
+                        f.write(f"{obj['x'] - half:.1f} {obj['y'] + half:.1f}\n")
+                        f.write(f"{obj['x'] + half:.1f} {obj['y'] + half:.1f}\n")
+                        f.write(f"{r:.2f} {g:.2f} {b:.2f}\n\n")
+                        
+                    elif obj_type == 'cube':
+                        f.write(f"# Cube (3D) - экспортирован как square\n")
+                        f.write(f"square\n")
+                        f.write(f"{obj['x']:.1f} {obj['y']:.1f} {size}\n")
+                        f.write(f"{r:.2f} {g:.2f} {b:.2f}\n\n")
+                
+                f.write("# Сцена создана в SGS Scene Editor v2.0\n")
+                
             QMessageBox.information(self, "Exported", f"Scene exported to {path}")
 
 if __name__ == "__main__":
