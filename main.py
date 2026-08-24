@@ -1,3 +1,5 @@
+#main.py of sgse(i want to see language - python 100%)
+
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
